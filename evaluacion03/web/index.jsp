@@ -10,7 +10,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inicio</title>
     </head>
-    <body><center><h1>"SANO COMO YOGURT</h1></center>
+    <body><center><h1>"SANO COMO YOGURT"</h1></center>
     <td><h1>Autentificación</h1></td>
         <center>  
         <form action="Menu" method="post">           
