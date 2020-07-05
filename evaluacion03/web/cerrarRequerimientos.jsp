@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cerrar Requerimietos</title>
+        <title>Cancelar horas</title>
     </head>
     <body>
         <h1>Cancelar horas</h1>
@@ -88,7 +88,7 @@
                 <td><b>Doctores</b></td>
                 <td><b>Horas Disponibles</b></td>           
                 <td><b>Especialidades</b></td>
-                <td></td>  
+                <td></td>
             </tr>
             <% if(request.getAttribute("listRequerimientos")!=null){
                     ArrayList<Requerimientos> req = (ArrayList<Requerimientos>)request.getAttribute("listRequerimientos");
@@ -98,7 +98,7 @@
                         <td><%=r.getDoctores()%></td>           
                         <td><%=r.getAsignacion()%></td>
                         <td><%=r.getDescripcion()%></td>
-                        <td><input type="button" value="Cerrar" onclick="document.getElementById('cerrarRequerimiento').value='<%=r.getRequerimientoid()%>';this.form.submit();"/></td>
+                        <td><input type="button" value="Cancelar hora" onclick="document.getElementById('cerrarRequerimiento').value='<%=r.getRequerimientoid()%>';this.form.submit();"/></td>
                     </tr>
             <%}} %>
             <input type="hidden" id="cerrarRequerimiento" name="cerrarRequerimiento" value="0" />

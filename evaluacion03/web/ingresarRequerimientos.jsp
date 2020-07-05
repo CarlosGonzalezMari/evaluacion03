@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Ingresar Requerimientos</title>
+        <title>Ingresar Horas</title>
     </head>
     <body>
         <h1>Registrar horas de pacientes</h1>

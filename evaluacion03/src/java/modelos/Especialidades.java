@@ -62,15 +62,5 @@ public class Especialidades {
             especialidades.add(new Especialidades(rs.getInt("especialidadId"),rs.getInt("tipoId"),rs.getString("especialidad")));
         }
         return especialidades;
-    }
-    
-    /*public ArrayList<Encargados> obtenerEncargados(int asignacionesid) throws SQLException, ClassNotFoundException{
-        String sentencia = "select encargadosid, asignacionesid, encargado from encargados where asignacionesid='"+asignacionesid+"'";
-        ArrayList<Encargados> encargados = new ArrayList();
-        ResultSet rs = conexion.consultarSQL(sentencia);
-        while(rs.next()){
-            encargados.add(new Especialidades(rs.getInt("encargadosid"),rs.getInt("asignacionesid"),rs.getString("encargado")));
-        }
-        return encargados;
-    }*/   
+    }  
 }
