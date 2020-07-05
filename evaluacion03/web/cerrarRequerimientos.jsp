@@ -87,7 +87,7 @@
             <tr>
                 <td><b>Doctores</b></td>
                 <td><b>Horas Disponibles</b></td>           
-                <td><b>Especialidades</b></td>
+                <td><b>Descripcion</b></td>
                 <td></td>
             </tr>
             <% if(request.getAttribute("listRequerimientos")!=null){

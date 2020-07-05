@@ -62,5 +62,6 @@ public class Especialidades {
             especialidades.add(new Especialidades(rs.getInt("especialidadId"),rs.getInt("tipoId"),rs.getString("especialidad")));
         }
         return especialidades;
-    }  
+    }
+  
 }
