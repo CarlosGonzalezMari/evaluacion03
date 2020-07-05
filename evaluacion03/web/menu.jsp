@@ -17,22 +17,22 @@
                 <table style="border: 3; ">
                     <tr>
                         <h6><a href="ingresarRequerimientos.jsp">
-                            <input type="button" value="Ingresar Requerimientos" /></h6>
+                            <input type="button" value="Reservar horas" /></h6>
                     </tr>
                     
                     <tr>
                         <h6><a href="consultarRequerimientos.jsp">
-                            <input type="button" value="Consultar Requerimientos" /></h6>
+                            <input type="button" value="Consultar horas" /></h6>
                     </tr>
                     
                     <tr>
                         <h6><a href="cerrarRequerimientos.jsp">
-                            <input type="button" value="Cerrar Requerimientos" /></h6>   
+                            <input type="button" value="Cancelar horas" /></h6>   
                     </tr>                    
                 </table>
             <tr>
                         <h6><a href="index.jsp">
-                            <input type="button" value="inicio" /></h6>   
+                            <input type="button" value="Volver a autentificacion" /></h6>   
                     </tr>
             
            <% if(request.getParameter("mensaje")!=null){%>

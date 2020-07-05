@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelos.Registrar;
+import modelos.Requerimientos;
 import modelos.Usuario;
 
 
@@ -23,7 +23,7 @@ public class Menu extends HttpServlet {
         switch(accion){
             case "1": iniciarSesion(request,response);
             break;
-            case "2": registrarHoras(request,response);
+            case "2": ingresarRequerimiento(request,response);
             break;
             case "3": consultarRequerimiento(request,response);
             break;
@@ -56,9 +56,9 @@ public class Menu extends HttpServlet {
         }   
     }
     
-    private void registrarHoras(HttpServletRequest request, HttpServletResponse response) throws IOException{
+    private void ingresarRequerimiento(HttpServletRequest request, HttpServletResponse response) throws IOException{
         try{
-        Registrar r = new Registrar(0, getString("gerencia",request), getString("departamento",request), 
+        Requerimientos r = new Requerimientos(0, getString("gerencia",request), getString("departamento",request), 
                 getString("asignar",request), getString("encargado",request), getString("requerimiento",request), null);
         response.sendRedirect("ingresarRequerimientos.jsp?mensaje="+r.ingresarRequerimientos());
         } catch (Exception e) {

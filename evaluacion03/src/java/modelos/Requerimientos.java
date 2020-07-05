@@ -5,8 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Registrar {
-    private String gerencia;
+public class Requerimientos {
+    private String doctores;
     private String departamento;
     private String asignacion;
     private String encargado;
@@ -16,13 +16,13 @@ public class Registrar {
     private Conexion conexion;
     
     
-    public Registrar() throws ClassNotFoundException, SQLException {
+    public Requerimientos() throws ClassNotFoundException, SQLException {
         conexion = new Conexion();
     }
 
-    public Registrar(int requerimientoid, String gerencia,String departamento,String asignacion,String encargado, String descripcion, String estado) throws ClassNotFoundException, SQLException {
+    public Requerimientos(int requerimientoid, String doctores,String departamento,String asignacion,String encargado, String descripcion, String estado) throws ClassNotFoundException, SQLException {
         this.requerimientoid = requerimientoid;
-        this.gerencia = gerencia;
+        this.doctores = doctores;
         this.departamento = departamento;
         this.asignacion = asignacion;
         this.encargado = encargado;
@@ -30,12 +30,12 @@ public class Registrar {
         this.estado = estado;
         conexion = new Conexion();
     }
-    public String getGerencia() {
-        return gerencia;
+    public String getDoctores() {
+        return doctores;
     }
 
-    public void setGerencia(String gerencia) {
-        this.gerencia = gerencia;
+    public void setDoctores(String doctores) {
+        this.doctores = doctores;
     }
 
     public String getDepartamento() {
@@ -97,7 +97,7 @@ public class Registrar {
     public String ingresarRequerimientos() throws SQLException{
         requerimientoid = selectId();
         String sentencia = "INSERT INTO requerimientos VALUES ('"+requerimientoid+"',"
-                + "'"+gerencia+"',"+ "'"+departamento+"','"+asignacion+"','"+encargado+"','"+descripcion+"','Abierto')";
+                + "'"+doctores+"',"+ "'"+departamento+"','"+asignacion+"','"+encargado+"','"+descripcion+"','Abierto')";
         if(conexion.ejecutarSQL(sentencia)==1){
             return "Requerimiento registrado";
         }else{
@@ -115,36 +115,36 @@ public class Registrar {
         return value+1;
     }
     
-    public ArrayList<Registrar> consultarRequerimientos() throws SQLException, ClassNotFoundException{
-        String sentencia = "SELECT requerimientoid, gerencia, departamento, asignacion, descripcion FROM "
-                + "requerimientos WHERE gerencia='"+gerencia+"' and departamento='"+departamento+"' and asignacion='"+asignacion+"'";
-        ArrayList<Registrar> requerimientos = new ArrayList();
+    public ArrayList<Requerimientos> consultarRequerimientos() throws SQLException, ClassNotFoundException{
+        String sentencia = "SELECT requerimientoid, doctores, departamento, asignacion, descripcion FROM "
+                + "requerimientos WHERE doctores='"+doctores+"' and departamento='"+departamento+"' and asignacion='"+asignacion+"'";
+        ArrayList<Requerimientos> requerimientos = new ArrayList();
         ResultSet rs = conexion.consultarSQL(sentencia);
         while(rs.next()){
-            requerimientos.add(new Registrar(rs.getInt("requerimientoid"), rs.getString("gerencia"), rs.getString("departamento"),rs.getString("asignacion"), null, rs.getString("descripcion"), null));
+            requerimientos.add(new Requerimientos(rs.getInt("requerimientoid"), rs.getString("doctores"), rs.getString("departamento"),rs.getString("asignacion"), null, rs.getString("descripcion"), null));
         }
         return requerimientos;
     }
     
-    public ArrayList<Registrar> consultarRequerimientosDos() throws SQLException, ClassNotFoundException{
-        String sentencia = "SELECT requerimientoid, gerencia, departamento, asignacion, descripcion, estado FROM "
-                + "requerimientos WHERE gerencia='"+gerencia+"' and departamento='"+departamento+"' and asignacion='"+asignacion+"' and estado='Abierto'";
-        ArrayList<Registrar> requerimientos = new ArrayList();
+    public ArrayList<Requerimientos> consultarRequerimientosDos() throws SQLException, ClassNotFoundException{
+        String sentencia = "SELECT requerimientoid, doctores, departamento, asignacion, descripcion, estado FROM "
+                + "requerimientos WHERE doctores='"+doctores+"' and departamento='"+departamento+"' and asignacion='"+asignacion+"' and estado='Abierto'";
+        ArrayList<Requerimientos> requerimientos = new ArrayList();
         ResultSet rs = conexion.consultarSQL(sentencia);
         while(rs.next()){
-            requerimientos.add(new Registrar(rs.getInt("requerimientoid"), rs.getString("gerencia"), rs.getString("departamento"),rs.getString("asignacion"), null, rs.getString("descripcion"), rs.getString("estado")));
+            requerimientos.add(new Requerimientos(rs.getInt("requerimientoid"), rs.getString("doctores"), rs.getString("departamento"),rs.getString("asignacion"), null, rs.getString("descripcion"), rs.getString("estado")));
         }
         return requerimientos;
     }
     
-    public ArrayList<Registrar> cerrarRequerimientos() throws SQLException, ClassNotFoundException{
+    public ArrayList<Requerimientos> cerrarRequerimientos() throws SQLException, ClassNotFoundException{
         String sentencia = "UPDATE requerimientos SET estado = 'Cerrado' WHERE requerimientoid = "+requerimientoid+"";
-        ArrayList<Registrar> requerimientos = new ArrayList();
+        ArrayList<Requerimientos> requerimientos = new ArrayList();
         if(conexion.ejecutarSQL(sentencia)==1){
-            String sentenciaSelect = "SELECT gerencia, departamento, asignacion FROM requerimientos WHERE requerimientoid = "+requerimientoid+"";
+            String sentenciaSelect = "SELECT doctores, departamento, asignacion FROM requerimientos WHERE requerimientoid = "+requerimientoid+"";
             ResultSet rs = conexion.consultarSQL(sentenciaSelect);
             while(rs.next()){
-                gerencia = rs.getString("gerencia");
+                doctores = rs.getString("doctores");
                 departamento = rs.getString("departamento");
                 asignacion = rs.getString("asignacion");
             }
